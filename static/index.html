@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <title>Cardápio · Comanda</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;600;700&family=Courier+Prime:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Card<em>ápio</em></h1>
+        <p class="sub">Cadastre os produtos e monte pedidos no balcão.</p>
+      </div>
+      <button class="btn" id="sair" hidden>Sair do perfil</button>
+    </header>
+
+    <section id="vStart">
+      <div class="start">
+        <h2>Escolha uma opção</h2>
+        <button class="btn" data-go="adm">Administrador <kbd>1</kbd></button>
+        <button class="btn" data-go="op">Operador <kbd>2</kbd></button>
+        <button class="btn" data-go="sair">Sair <kbd>0</kbd></button>
+      </div>
+    </section>
+
+    <section id="vBye" hidden>
+      <div class="start">
+        <h2>Saiu</h2>
+        <p class="sub">O programa foi encerrado. Seus produtos continuam salvos.</p><button class="btn pri"
+          id="volta">Voltar ao início</button>
+      </div>
+    </section>
+
+    <section id="vAdm" hidden>
+      <div class="bar">
+        <h2 id="count"></h2><button class="btn pri" id="novo">Cadastrar produto</button>
+      </div>
+      <div class="ledger" id="ledger"></div>
+    </section>
+
+    <section id="vOp" hidden>
+      <div class="op">
+        <div>
+          <p class="sub" id="saud" style="margin:0 0 14px;max-width:none"></p>
+          <form class="codein" id="codeForm"><input id="codeIn" inputmode="numeric" placeholder="Código do produto"
+              aria-label="Código do produto"><button class="btn pri" type="submit">Adicionar</button></form>
+          <div class="menu" id="menu"></div>
+        </div>
+        <div class="ticket-col">
+          <div class="ticket" id="ticket"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <dialog id="dForm">
+    <form id="f" method="dialog">
+      <h2 id="fTitle"></h2><span class="cdg" id="fCod"></span>
+      <p class="sub" id="fSub"></p>
+      <label for="fNome">Nome do produto</label><input id="fNome" autocomplete="off">
+      <label for="fValor">Valor (R$)</label><input id="fValor" inputmode="decimal" autocomplete="off">
+      <p class="err" id="fErr"></p>
+      <div class="dact"><button type="button" class="btn" id="fCancel">Cancelar</button><button type="submit"
+          class="btn pri">Salvar produto</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="dDel">
+    <h2>Apagar produto</h2>
+    <p id="delTxt"></p>
+    <div class="dact"><button class="btn" id="delNo">Cancelar</button><button class="btn pri" id="delYes">Apagar
+        produto</button></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+
+</html>
